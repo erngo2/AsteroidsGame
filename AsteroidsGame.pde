@@ -13,9 +13,9 @@ public void draw()
 }
 
 void keyPressed(){
-	if((ship.myDirectionX < 5 || ship.myDirectionY < 5) && (ship.myDirectionX > -5 || ship.myDirectionY > -5)){
+	/*if((ship.myDirectionX < 5 && ship.myDirectionY < 5) && (ship.myDirectionX > -5 && ship.myDirectionY > -5)){*/
 		if(keyCode == UP || key == 'w' || key == 'W'){ship.accelerate(1);}
-	}
+	//}
 	if(keyCode == DOWN || key == 's' || key == 'S'){ship.accelerate(-0.1);}
 	if(keyCode == LEFT || key == 'a' || key == 'A'){ship.turn(-10);}
 	if(keyCode == RIGHT || key == 'd' || key == 'D'){ship.turn(10);}
