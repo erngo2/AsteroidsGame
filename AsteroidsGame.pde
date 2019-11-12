@@ -1,13 +1,20 @@
 Spaceship ship;
+Star[] tar;
 public void setup() 
 {
 	size(500, 500);
 	fill(0);
 	ship = new Spaceship();
+	tar = new Star[1000];
+ 	for(int i = 0; i < tar.length; i++){
+ 		tar[i] = new Star();
+ 	}
 }
 public void draw() 
 {
 	background(192);
+	for(int i = 0; i < tar.length; i++)
+ 		tar[i].show();
 	ship.move();
 	ship.show();
 }
