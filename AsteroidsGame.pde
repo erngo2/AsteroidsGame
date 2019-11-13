@@ -31,6 +31,7 @@ void keyPressed(){
 		ship.myDirectionY = 0;
 		ship.myCenterX = Math.random() * 500;
 		ship.myCenterY = Math.random() * 500;
+		ship.myPointDirection = Math.random() * 360;
 	}
 	if(key == ' '){
 		ship.myDirectionX = 0;
