@@ -1,5 +1,7 @@
 Spaceship ship;
 Star[] tar;
+double x = 0;
+double y = 0;
 public void setup() 
 {
 	size(500, 500);
@@ -17,6 +19,8 @@ public void draw()
  		tar[i].show();
 	ship.move();
 	ship.show();
+	x = ship.getMyDirectionX();
+	y = ship.getMyDirectionY();
 }
 
 void keyPressed(){
@@ -34,7 +38,13 @@ void keyPressed(){
 		ship.setMyPointDirection(Math.random() * 360);
 	}
 	if(key == ' '){
-		ship.setMyDirectionX(0);
-		ship.setMyDirectionY(0);
+		if(x > 0)
+			ship.subMyDirectionX();
+		if(x < 0)
+			ship.addMyDirectionX();
+		if(y > 0)
+			ship.subMyDirectionY();
+		if(y < 0)
+			ship.addMyDirectionY();
 	}
 }
