@@ -27,14 +27,14 @@ void keyPressed(){
 	if(keyCode == LEFT || key == 'a' || key == 'A'){ship.turn(-10);}
 	if(keyCode == RIGHT || key == 'd' || key == 'D'){ship.turn(10);}
 	if(key == 'G' || key == 'g'){
-		ship.myDirectionX = 0;
-		ship.myDirectionY = 0;
-		ship.myCenterX = Math.random() * 500;
-		ship.myCenterY = Math.random() * 500;
-		ship.myPointDirection = Math.random() * 360;
+		ship.setMyDirectionX(0);
+		ship.setMyDirectionY(0);
+		ship.setMyCenterX(Math.random() * 500);
+		ship.setMyCenterY(Math.random() * 500);
+		ship.setMyPointDirection(Math.random() * 360);
 	}
 	if(key == ' '){
-		ship.myDirectionX = 0;
-		ship.myDirectionY = 0;
+		ship.setMyDirectionX(0);
+		ship.setMyDirectionY(0);
 	}
 }
