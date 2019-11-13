@@ -12,7 +12,7 @@ public void setup()
 }
 public void draw() 
 {
-	background(192);
+	background(0);
 	for(int i = 0; i < tar.length; i++)
  		tar[i].show();
 	ship.move();
