@@ -43,19 +43,26 @@ class Spaceship extends Floater
 
 	public void subMyDirectionX(){
 		myDirectionX--;
-		if(myDirection)
+		if(myDirectionX > -1 && myDirectionX < 1)
+			myDirectionX = 0;
 	}
 
 	public void subMyDirectionY(){
 		myDirectionY--;
+		if(myDirectionY > -1 && myDirectionY < 1)
+			myDirectionY = 0;
 	}
 
 	public void addMyDirectionX(){
 		myDirectionX++;
+		if(myDirectionX > -1 && myDirectionX < 1)
+			myDirectionX = 0;
 	}
 
 	public void addMyDirectionY(){
 		myDirectionY++;
+		if(myDirectionY > -1 && myDirectionY < 1)
+			myDirectionY = 0;
 	}
 
 	public double getMyDirectionX(){

@@ -23,7 +23,7 @@ public void draw()
 	y = ship.getMyDirectionY();
 }
 
-void keyPressed(){
+public void keyPressed(){
 	/*if((ship.myDirectionX < 5 && ship.myDirectionY < 5) && (ship.myDirectionX > -5 && ship.myDirectionY > -5)){*/
 		if(keyCode == UP || key == 'w' || key == 'W'){ship.accelerate(1);}
 	//}
