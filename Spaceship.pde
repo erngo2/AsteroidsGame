@@ -75,4 +75,43 @@ class Spaceship extends Floater
 	public void setMyPointDirection(double degrees){
 		myPointDirection = degrees;
 	}
+	public void show ()  //Draws the floater at the current position  
+  {             
+    fill(myColor[0], myColor[1], myColor[2]);   
+    stroke(myColor[0], myColor[1], myColor[2]);    
+    
+    //translate the (x,y) center of the ship to the correct position
+    translate((float)myCenterX, (float)myCenterY);
+
+    //convert degrees to radians for rotate()     
+    float dRadians = (float)(myPointDirection*(Math.PI/180));
+    
+    //rotate so that the polygon will be drawn in the correct direction
+    rotate(dRadians);
+    
+    //draw the polygon
+    beginShape();
+    for (int nI = 0; nI < corners; nI++)
+    {
+      vertex(xCorners[nI], yCorners[nI]);
+    }
+    endShape(CLOSE);
+
+    if(myDirectionX != 0 || myDirectionY != 0){
+    if(frameCount / 2 == 0){
+    	line(-7, -4, -11, -4);
+    	line(-4, 0, -8, 0);
+    	line(-7, 4, -11, 4);
+    } else {
+    	line(-9, -4, -13, -4);
+    	line(-6, 0, -10, 0);
+    	line(-9, 4, -13, 4);
+    }
+
+	}
+    
+    //"unrotate" and "untranslate" in reverse order
+    rotate(-1*dRadians);
+    translate(-1*(float)myCenterX, -1*(float)myCenterY);
+  }   
 }

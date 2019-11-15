@@ -1,7 +1,11 @@
 Spaceship ship;
 Star[] tar;
-double x = 0;
-double y = 0;
+boolean u = false;
+boolean d = false;
+boolean l = false;
+boolean r = false;
+int x = 0;
+int y = 0;
 public void setup() 
 {
 	size(500, 500);
@@ -17,22 +21,30 @@ public void draw()
 	background(0);
 	for(int i = 0; i < tar.length; i++)
  		tar[i].show();
-	ship.move();
 	ship.show();
-	if(x == 1){ship.accelerate(0.5);}
-	if(x == -1){ship.accelerate(-0.5);}
-	if(y == 1){ship.turn(-10);}
-	if(y == -1){ship.turn(10);}
-	x = ship.getMyDirectionX();
-	y = ship.getMyDirectionY();
+	ship.move();
+	if(u == true){
+		//ship.setMyDirectionX(0);
+		//ship.setMyDirectionY(0);
+		ship.accelerate(0.25);
+	}
+	if(d == true){
+		//ship.setMyDirectionX(0);
+		//ship.setMyDirectionY(0);
+		ship.accelerate(-0.25);
+	}
+	if(l == true){ship.turn(-5);}
+	if(r == true){ship.turn(5);}
+	x = (int)ship.getMyDirectionX();
+	y = (int)ship.getMyDirectionY();
 }
 
 public void keyPressed(){
 
-	if(keyCode == UP || key == 'w' || key == 'W'){x = 1;}
-	if(keyCode == DOWN || key == 's' || key == 'S'){x = -1;}
-	if(keyCode == LEFT || key == 'a' || key == 'A'){y = 1;}
-	if(keyCode == RIGHT || key == 'd' || key == 'D'){y = -1;}
+	if(keyCode == UP || key == 'w' || key == 'W'){u = true;}
+	if(keyCode == DOWN || key == 's' || key == 'S'){d = true;}
+	if(keyCode == LEFT || key == 'a' || key == 'A'){l = true;}
+	if(keyCode == RIGHT || key == 'd' || key == 'D'){r = true;}
 	if(key == 'G' || key == 'g'){
 		ship.setMyDirectionX(0);
 		ship.setMyDirectionY(0);
@@ -53,8 +65,8 @@ public void keyPressed(){
 }
 
 public void keyReleased(){
-	if(keyCode == UP || key == 'w' || key == 'W'){x = 0;}
-	if(keyCode == DOWN || key == 's' || key == 'S'){x = -0;}
-	if(keyCode == LEFT || key == 'a' || key == 'A'){y = 0;}
-	if(keyCode == RIGHT || key == 'd' || key == 'D'){y = -0;}
+	if(keyCode == UP || key == 'w' || key == 'W'){u = false;}
+	if(keyCode == DOWN || key == 's' || key == 'S'){d = false;}
+	if(keyCode == LEFT || key == 'a' || key == 'A'){l = false;}
+	if(keyCode == RIGHT || key == 'd' || key == 'D'){r = false;}
 }
