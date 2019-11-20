@@ -3,7 +3,7 @@ class Asteroid extends Floater
 	private int speedDeRot;
 	public Asteroid()
 	{
-		corners = 50;  
+		corners = 25;  
   		xCorners = new int[corners];   
   		yCorners = new int[corners];
   		for(int i = 0; i < corners; i++){
