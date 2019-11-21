@@ -3,22 +3,14 @@ class Asteroid extends Floater
 	private int speedDeRot;
 	public Asteroid()
 	{
-		corners = 25;  
+		corners = 9;  
   		xCorners = new int[corners];   
   		yCorners = new int[corners];
   		for(int i = 0; i < corners; i++){
-  			xCorners[i] = (int)((Math.random() * (int)(Math.random() * 35)) - 17);
-  			yCorners[i] = (int)((Math.random() * (int)(Math.random() * 35)) - 17);
+  			xCorners[i] = (int)((Math.random() * 21) - 10);
+  			yCorners[i] = (int)((Math.random() * 21) - 10);
 	  	}
-  		/*xCorners[1] = (int)(Math.random() * 15 - 7);
-  		yCorners[1] = (int)(Math.random() * 15 - 7);
-  		xCorners[2] = (int)(Math.random() * 15 - 7);
-  		yCorners[2] = (int)(Math.random() * 15 - 7);
-  		xCorners[3] = (int)(Math.random() * 15 - 7);
-  		yCorners[3] = (int)(Math.random() * 15 - 7);
-  		xCorners[4] = (int)(Math.random() * 15 - 7);
-  		yCorners[4] = (int)(Math.random() * 15 - 7);*/
-
+  		
   		myColor[0] = 124;   
   		myColor[1] = 124;   
   		myColor[2] = 124;   
@@ -35,5 +27,13 @@ class Asteroid extends Floater
 	public void move(){
 		turn(speedDeRot);
 		super.move();
+	}
+
+	public double rockCenX(){
+		return myCenterX;
+	}
+
+	public double rockCenY(){
+		return myCenterY;
 	}
 }

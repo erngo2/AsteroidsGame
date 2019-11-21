@@ -73,6 +73,15 @@ class Spaceship extends Floater
 	public double getMyDirectionY(){
 		return myDirectionY;
 	}
+
+	public double getMyCenterX(){
+		return myCenterX;
+	}
+
+	public double getMyCenterY(){
+		return myCenterY;
+	}
+
 	public void setMyPointDirection(double degrees){
 		myPointDirection = degrees;
 	}
@@ -99,14 +108,20 @@ class Spaceship extends Floater
     endShape(CLOSE);
 
     if(myDirectionX != 0 || myDirectionY != 0){
-    if(frameCount / 2 == 0){
-    	line(-7, -4, -11, -4);
+    if(frameCount % 15 < 5){
+    	line(-7, -4, -11, -5);
     	line(-4, 0, -8, 0);
-    	line(-7, 4, -11, 4);
-    } else {
-    	line(-9, -4, -13, -4);
-    	line(-6, 0, -10, 0);
-    	line(-9, 4, -13, 4);
+    	line(-7, 4, -11, 5);
+    } 
+    if(frameCount % 15 <= 9 && frameCount % 15 >= 5){
+    	line(-10, -5, -14, -6);
+    	line(-7, 0, -11, 0);
+    	line(-10, 5, -14, 6);
+    }
+    if(frameCount % 15 >= 10){
+    	line(-13, -6, -17, -7);
+    	line(-10, 0, -14, 0);
+    	line(-13, 6, -17, 7);
     }
 
 	}
