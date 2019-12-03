@@ -7,6 +7,7 @@ boolean l = false;
 boolean r = false;
 double x = 0;
 double y = 0;
+ArrayList <Bullet> bull = new ArrayList <Bullet>();
 
 public void setup() 
 {
@@ -27,6 +28,11 @@ public void draw()
 		rock.get(i).move();
 		if((dist((float)ship.getMyCenterX(), (float)ship.getMyCenterY(), (float)rock.get(i).rockCenX(), (float)rock.get(i).rockCenY())) < 12){rock.remove(i);}
 	}
+	for(int i = 0; i < bull.size(); i++){
+		bull.get(i).show();
+		bull.get(i).move();
+		//bull.get(i).accelerate(0.1);
+	}
 	textSize(50);
 	fill(200, 100, 255);
 	text(rock.size(), 50, 50);
@@ -46,6 +52,7 @@ public void mousePressed(){
 }
 
 public void keyPressed(){
+	if(key == 'C' || key == 'c'){bull.add(new Bullet(ship));}
 	if(keyCode == UP || key == 'w' || key == 'W'){u = true;}
 	if(keyCode == DOWN || key == 's' || key == 'S'){d = true;}
 	if(keyCode == LEFT || key == 'a' || key == 'A'){l = true;}

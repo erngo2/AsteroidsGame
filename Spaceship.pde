@@ -82,6 +82,10 @@ class Spaceship extends Floater
 		return myCenterY;
 	}
 
+	public double getMyPoint(){
+		return myPointDirection;
+	}
+
 	public void setMyPointDirection(double degrees){
 		myPointDirection = degrees;
 	}
