@@ -5,6 +5,7 @@ boolean u = false;
 boolean d = false;
 boolean l = false;
 boolean r = false;
+boolean shoot = false;
 double x = 0;
 double y = 0;
 ArrayList <Bullet> bull = new ArrayList <Bullet>();
@@ -28,16 +29,27 @@ public void draw()
 		rock.get(i).move();
 		if((dist((float)ship.getMyCenterX(), (float)ship.getMyCenterY(), (float)rock.get(i).rockCenX(), (float)rock.get(i).rockCenY())) < 12){rock.remove(i);}
 	}
+	for(int e = 0; e < bull.size(); e++){
+		for(int i = 0; i < rock.size(); i++){
+			if((dist((float)bull.get(e).getMyCenX(), (float)bull.get(e).getMyCenY(), (float)rock.get(i).rockCenX(), (float)rock.get(i).rockCenY())) < 12){
+				rock.remove(i);
+				bull.remove(e);
+				break;
+			}
+		}
+	}
 	for(int i = 0; i < bull.size(); i++){
 		bull.get(i).show();
 		bull.get(i).move();
-		//bull.get(i).accelerate(0.1);
+		if(bull.get(i).getMyCenX() >= 500 || bull.get(i).getMyCenX() <= 0 || bull.get(i).getMyCenY() >= 500 || bull.get(i).getMyCenY() <= 0){bull.remove(i);}    
 	}
 	textSize(50);
 	fill(200, 100, 255);
-	text(rock.size(), 50, 50);
+	text(rock.size(), 30, 50);
+	text(bull.size(), 30, 90);
 	ship.show();
 	ship.move();
+	if(shoot == true){bull.add(new Bullet(ship));}
 	if(u == true){ship.accelerate(0.1);}
 	if(d == true){ship.accelerate(-0.1);}
 	if(l == true){ship.turn(-5);}
@@ -47,12 +59,12 @@ public void draw()
 }
 
 public void mousePressed(){
-	//for(int i = 0; i < 200; i++)
-	rock.add(new Asteroid());
+	for(int i = 0; i < 20; i++)
+		rock.add(new Asteroid());
 }
 
 public void keyPressed(){
-	if(key == 'C' || key == 'c'){bull.add(new Bullet(ship));}
+	if(key == 'C' || key == 'c'){shoot = true;}
 	if(keyCode == UP || key == 'w' || key == 'W'){u = true;}
 	if(keyCode == DOWN || key == 's' || key == 'S'){d = true;}
 	if(keyCode == LEFT || key == 'a' || key == 'A'){l = true;}
@@ -77,4 +89,5 @@ public void keyReleased(){
 	if(keyCode == DOWN || key == 's' || key == 'S'){d = false;}
 	if(keyCode == LEFT || key == 'a' || key == 'A'){l = false;}
 	if(keyCode == RIGHT || key == 'd' || key == 'D'){r = false;}
+	if(key == 'C' || key == 'c'){shoot = false;}
 }
