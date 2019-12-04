@@ -4,8 +4,8 @@ class Bullet extends Floater
 		myCenterX = ship.getMyCenterX();
 		myCenterY = ship.getMyCenterY();
 		myPointDirection = ship.getMyPoint();
-		myDirectionX = 10 * Math.cos(myPointDirection*(Math.PI/180)) + ship.getMyDirectionX();
-		myDirectionY = 10 * Math.sin(myPointDirection*(Math.PI/180)) + ship.getMyDirectionY();
+		myDirectionX = 5 * Math.cos(myPointDirection*(Math.PI/180)) + ship.getMyDirectionX();
+		myDirectionY = 5 * Math.sin(myPointDirection*(Math.PI/180)) + ship.getMyDirectionY();
 	}
 
 	public void move(){

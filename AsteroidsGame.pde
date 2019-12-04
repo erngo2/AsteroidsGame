@@ -8,6 +8,7 @@ boolean r = false;
 boolean shoot = false;
 double x = 0;
 double y = 0;
+int bulletRate = 0;
 ArrayList <Bullet> bull = new ArrayList <Bullet>();
 
 public void setup() 
@@ -47,15 +48,28 @@ public void draw()
 	fill(200, 100, 255);
 	text(rock.size(), 30, 50);
 	text(bull.size(), 30, 90);
+	text(bulletRate, 30, 140);
 	ship.show();
 	ship.move();
-	if(shoot == true){bull.add(new Bullet(ship));}
-	if(u == true){ship.accelerate(0.1);}
-	if(d == true){ship.accelerate(-0.1);}
+	if(shoot == true & bulletRate < 10){
+		bull.add(new Bullet(ship));
+		bulletRate++;
+	}
+	if(u == true){
+		ship.setMyDirectionX(0);
+		ship.setMyDirectionY(0);
+		ship.accelerate(2);
+	}
+	if(d == true){
+		ship.setMyDirectionX(0);
+		ship.setMyDirectionY(0);
+		ship.accelerate(-2);
+	}
 	if(l == true){ship.turn(-5);}
 	if(r == true){ship.turn(5);}
 	x = (int)ship.getMyDirectionX();
 	y = (int)ship.getMyDirectionY();
+	if(bulletRate > 0 && shoot == false){bulletRate--;}
 }
 
 public void mousePressed(){
