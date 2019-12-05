@@ -36,4 +36,12 @@ class Asteroid extends Floater
 	public double rockCenY(){
 		return myCenterY;
 	}
+
+	public void setRockX(double x){
+		myDirectionX = x;
+	}
+
+	public void setRockY(double y){
+		myDirectionY = y;
+	}
 }
