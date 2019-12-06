@@ -29,22 +29,22 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     myCenterY += myDirectionY;     
 
     //wrap around screen    
-    if(myCenterX > width)
+    if(myCenterX > 500)
     {     
       myCenterX = 0;    
     }    
     else if (myCenterX < 0)
     {     
-      myCenterX = width;    
+      myCenterX = 500;    
     }    
-    if(myCenterY > height)
+    if(myCenterY > 500)
     {    
       myCenterY = 0;    
     } 
     
     else if (myCenterY < 0)
     {     
-      myCenterY = height;    
+      myCenterY = 500;    
     }   
   }   
   public void show ()  //Draws the floater at the current position  

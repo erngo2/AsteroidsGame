@@ -38,10 +38,10 @@ class Asteroid extends Floater
 	}
 
 	public void setRockX(double x){
-		myDirectionX = x;
+		myCenterX = x;
 	}
 
 	public void setRockY(double y){
-		myDirectionY = y;
+		myCenterY = y;
 	}
 }

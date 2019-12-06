@@ -1,7 +1,7 @@
 Spaceship ship;
 Star[] tar;
 ArrayList <Asteroid> rock = new ArrayList <Asteroid>();
-ArrayList <Integer> hp = new ArrayList <Integer>();
+int hp = 3;
 boolean u = false;
 boolean d = false;
 boolean l = false;
@@ -11,21 +11,27 @@ double x = 0;
 double y = 0;
 int bulletRate = 0;
 ArrayList <Bullet> bull = new ArrayList <Bullet>();
+int lvl = 0;
 
 public void setup() 
 {
 	frameRate(60);
-	size(500, 500);
+	size(500, 600);
+
 	fill(0);
 	ship = new Spaceship();
 	tar = new Star[1000];
-	for(int i = 0; i < 4; i++){hp.add(0);}
  	for(int i = 0; i < tar.length; i++){tar[i] = new Star();}
  	for(int i = 0; i < 20; i++){rock.add(new Asteroid());}
 }
 public void draw() 
-{
+{	
 	background(0);
+
+	fill(25,25,25);
+	stroke(255);
+	line(0, 515, 500, 515);
+
 	//background stars
 	for(int i = 0; i < tar.length; i++){tar[i].show();}
 	//bullet collision with rock only
@@ -46,19 +52,15 @@ public void draw()
 	}
 	//miscellaneous text for numbers
 	textSize(15);
-
+	//asteroid count
 	fill(200, 100, 255);
-	text("Number of asteroids: " + rock.size(), 30, 50);
-	rect(20, 450, 150 - (bulletRate * 7.5), 15);
-	//hp bar
-	/*for(int i = 0; i < hp.size() - 1; i++){
-		stroke(100, 200, 100);
-		rect((i) * 50 + 20, 420, 50, 15);
-		noStroke();
-	}*/
-
-	fill(100,200,150);
-	text("Heat Capacity: " + (20 - bulletRate), 21, 465);
+	text("Number of asteroids: " + rock.size(), 300, 535);
+	//bullet rate
+	fill(100, 20, 60);
+	stroke(20,60,100);
+	rect(20, 550, 150 - (bulletRate * 7.5), 15);
+	fill(150,200,150);
+	text("Heat Capacity: " + (20 - bulletRate), 30, 563);
 	//ship movement and stuff
 	ship.show();
 	ship.move();
@@ -88,7 +90,7 @@ public void draw()
 		rock.get(i).move();
 		if((dist((float)ship.getMyCenterX(), (float)ship.getMyCenterY(), (float)rock.get(i).rockCenX(), (float)rock.get(i).rockCenY())) < 12){
 			rock.remove(i);
-			if(hp.size() > 2){hp.remove(0);}
+			if(hp > 0){hp--;}
 			else{
 				noLoop();
 				textSize(25);
@@ -96,22 +98,34 @@ public void draw()
 				textAlign(CENTER, CENTER);
 				text("Game Over", 250, 200);
 				text("Restart? Press R", 250, 230);
+				textAlign(LEFT);
 			}
 		}
-		for(int ca = 0; ca < hp.size() - 1; ca++){
+		for(int ca = 0; ca < hp; ca++){
 			fill(200, 100, 255);
 			stroke(100, 200, 100);
-			rect((ca) * 50 + 20, 420, 50, 15);
+			rect((ca) * 50 + 20, 520, 50, 15);
 			noStroke();
 		}
+	}
+	if(rock.size() == 0){
+		lvl++;
+		noLoop();
+		textSize(25);
+		fill(200,200,200);
+		textAlign(CENTER, CENTER);
+		text("Level " + lvl + " Complete", 250, 200);
+		text("Continue? Press F", 250, 230);
+		textAlign(LEFT);
 	}
 	
 }
 
 public void mousePressed(){
-	if(mouseButton == RIGHT){
+	//dev stuff
+	/*if(mouseButton == RIGHT){
 		for(int i = 0; i < 20; i++){rock.add(new Asteroid());}
-	}
+	}*/
 }
 
 public void keyPressed(){
@@ -134,18 +148,34 @@ public void keyPressed(){
 		if(y < 0){ship.addMyDirectionY();}
 	}
 	if(key == 'R' || key == 'r'){
-		loop();
-		for(int i = 0; i < 3; i++){hp.add(0);}
-		ship.setMyDirectionX(0);
-		ship.setMyDirectionY(0);
-		ship.setMyCenterX(Math.random() * 500);
-		ship.setMyCenterY(Math.random() * 500);
-		ship.setMyPointDirection(Math.random() * 360);
-		for(int i = 0; i < rock.size(); i++){
-		rock.get(i).setRockX(Math.random() * 500);
-		rock.get(i).setRockY(Math.random() * 500);
+		if(hp == 0){
+			loop();
+			hp = 3;
+			ship.setMyDirectionX(0);
+			ship.setMyDirectionY(0);
+			ship.setMyCenterX(250);
+			ship.setMyCenterY(350);
+			ship.setMyPointDirection(270);
+			if(rock.size() < 21){
+				for(int i = rock.size(); i < 21; i++){rock.add(new Asteroid());}
+			}
+			for(int i = 0; i < rock.size(); i++){
+			rock.get(i).setRockX(Math.random() * 500);
+			rock.get(i).setRockY(Math.random() * 500);
+			}
 		}
-		
+	}
+	if(key == 'F' || key == 'f'){
+		if(rock.size() == 0){
+			loop();
+			hp = 3;
+			ship.setMyDirectionX(0);
+			ship.setMyDirectionY(0);
+			ship.setMyCenterX(250);
+			ship.setMyCenterY(350);
+			ship.setMyPointDirection(270);
+			for(int i = 0; i < 20 * (1.1 * lvl); i++){rock.add(new Asteroid());}
+		}
 	}
 }
 
