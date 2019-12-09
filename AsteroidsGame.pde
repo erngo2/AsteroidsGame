@@ -174,7 +174,7 @@ public void keyPressed(){
 			ship.setMyCenterX(250);
 			ship.setMyCenterY(350);
 			ship.setMyPointDirection(270);
-			for(int i = 0; i < 20 * (1.1 * lvl); i++){rock.add(new Asteroid());}
+			for(int i = 0; i < 20 * (0.5 * (lvl + 1)); i++){rock.add(new Asteroid());}
 		}
 	}
 }
