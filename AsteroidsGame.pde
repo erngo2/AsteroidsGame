@@ -61,6 +61,9 @@ public void draw()
 	rect(20, 550, 150 - (bulletRate * 7.5), 15);
 	fill(150,200,150);
 	text("Heat Capacity: " + (20 - bulletRate), 30, 563);
+	//lvl
+	fill(160, 180, 240);
+	text("Level:" + lvl, 300, 563);
 	//ship movement and stuff
 	ship.show();
 	ship.move();
@@ -174,7 +177,7 @@ public void keyPressed(){
 			ship.setMyCenterX(250);
 			ship.setMyCenterY(350);
 			ship.setMyPointDirection(270);
-			for(int i = 0; i < 20 * (0.5 * (lvl + 1)); i++){rock.add(new Asteroid());}
+			for(int i = 0; i < 20 * (0.75 * (lvl + 1)); i++){rock.add(new Asteroid());}
 		}
 	}
 }
