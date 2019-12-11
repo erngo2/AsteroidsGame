@@ -125,10 +125,10 @@ public void draw()
 }
 
 public void mousePressed(){
-	//dev stuff
-	/*if(mouseButton == RIGHT){
+	if(mouseButton == RIGHT){
 		for(int i = 0; i < 20; i++){rock.add(new Asteroid());}
-	}*/
+	}
+	if(mouseButton == LEFT){lvl++;}
 }
 
 public void keyPressed(){
