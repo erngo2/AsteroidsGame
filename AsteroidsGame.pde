@@ -44,7 +44,7 @@ public void draw()
 			}
 		}
 	}
-	//
+	//bullets
 	for(int i = 0; i < bull.size(); i++){
 		bull.get(i).show();
 		bull.get(i).move();
@@ -159,8 +159,13 @@ public void keyPressed(){
 			ship.setMyCenterX(250);
 			ship.setMyCenterY(350);
 			ship.setMyPointDirection(270);
-			if(rock.size() < 21){
-				for(int i = rock.size(); i < 21; i++){rock.add(new Asteroid());}
+			if(lvl == 0){
+				for(int i = 0; i < 20; i++){rock.add(new Asteroid());}
+			}
+			else {
+				if(rock.size() < 20 * (0.75 * (lvl + 1))){
+					for(int i = rock.size(); i < 20 * (0.75 * (lvl + 1)); i++){rock.add(new Asteroid());}
+				}
 			}
 			for(int i = 0; i < rock.size(); i++){
 			rock.get(i).setRockX(Math.random() * 500);
